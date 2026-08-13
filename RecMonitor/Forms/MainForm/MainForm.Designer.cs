@@ -32,9 +32,11 @@ partial class MainForm
         MinimizedButton = new Button();
         CloseButton = new Button();
         GPU = new Panel();
+        label3 = new Label();
         label1 = new Label();
         GPUImg = new Label();
         CPU = new Panel();
+        label2 = new Label();
         CPUTemp = new Label();
         CPUImg = new Label();
         RAM = new Panel();
@@ -42,8 +44,8 @@ partial class MainForm
         SSD = new Panel();
         SSDImg = new Label();
         panel1 = new Panel();
-        label2 = new Label();
-        label3 = new Label();
+        label4 = new Label();
+        label5 = new Label();
         TitleBar.SuspendLayout();
         GPU.SuspendLayout();
         CPU.SuspendLayout();
@@ -87,15 +89,25 @@ partial class MainForm
         GPU.Size = new Size(150, 70);
         GPU.TabIndex = 1;
         // 
+        // label3
+        // 
+        label3.AutoSize = true;
+        label3.Font = new Font("Impact", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
+        label3.Location = new Point(80, 41);
+        label3.Name = "label3";
+        label3.Size = new Size(41, 19);
+        label3.TabIndex = 2;
+        label3.Text = "68 °C";
+        // 
         // label1
         // 
         label1.AutoSize = true;
         label1.Font = new Font("Impact", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
         label1.Location = new Point(76, 10);
         label1.Name = "label1";
-        label1.Size = new Size(51, 25);
+        label1.Size = new Size(52, 25);
         label1.TabIndex = 1;
-        label1.Text = "48 %";
+        label1.Text = "83 %";
         // 
         // GPUImg
         // 
@@ -117,6 +129,16 @@ partial class MainForm
         CPU.Size = new Size(150, 70);
         CPU.TabIndex = 2;
         // 
+        // label2
+        // 
+        label2.AutoSize = true;
+        label2.Font = new Font("Impact", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
+        label2.Location = new Point(76, 10);
+        label2.Name = "label2";
+        label2.Size = new Size(51, 25);
+        label2.TabIndex = 1;
+        label2.Text = "40 %";
+        // 
         // CPUTemp
         // 
         CPUTemp.AutoSize = true;
@@ -125,7 +147,7 @@ partial class MainForm
         CPUTemp.Name = "CPUTemp";
         CPUTemp.Size = new Size(41, 19);
         CPUTemp.TabIndex = 0;
-        CPUTemp.Text = "68 °C";
+        CPUTemp.Text = "38 °C";
         CPUTemp.Click += label1_Click_1;
         // 
         // CPUImg
@@ -140,6 +162,8 @@ partial class MainForm
         // RAM
         // 
         RAM.BorderStyle = BorderStyle.FixedSingle;
+        RAM.Controls.Add(label5);
+        RAM.Controls.Add(label4);
         RAM.Controls.Add(RAMImg);
         RAM.Location = new Point(0, 170);
         RAM.Name = "RAM";
@@ -178,25 +202,25 @@ partial class MainForm
         panel1.Size = new Size(400, 280);
         panel1.TabIndex = 3;
         // 
-        // label2
+        // label4
         // 
-        label2.AutoSize = true;
-        label2.Font = new Font("Impact", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
-        label2.Location = new Point(76, 10);
-        label2.Name = "label2";
-        label2.Size = new Size(51, 25);
-        label2.TabIndex = 1;
-        label2.Text = "40 %";
+        label4.AutoSize = true;
+        label4.Font = new Font("Impact", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+        label4.Location = new Point(76, 10);
+        label4.Name = "label4";
+        label4.Size = new Size(46, 25);
+        label4.TabIndex = 3;
+        label4.Text = "77 %";
         // 
-        // label3
+        // label5
         // 
-        label3.AutoSize = true;
-        label3.Font = new Font("Impact", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
-        label3.Location = new Point(80, 41);
-        label3.Name = "label3";
-        label3.Size = new Size(41, 19);
-        label3.TabIndex = 2;
-        label3.Text = "68 °C";
+        label5.AutoSize = true;
+        label5.Font = new Font("Impact", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
+        label5.Location = new Point(60, 41);
+        label5.Name = "label5";
+        label5.Size = new Size(84, 19);
+        label5.TabIndex = 3;
+        label5.Text = "11,7 / 15,3 ГБ";
         // 
         // MainForm
         // 
@@ -222,6 +246,7 @@ partial class MainForm
         CPU.ResumeLayout(false);
         CPU.PerformLayout();
         RAM.ResumeLayout(false);
+        RAM.PerformLayout();
         SSD.ResumeLayout(false);
         ResumeLayout(false);
     }
@@ -244,4 +269,6 @@ partial class MainForm
     private Label label1;
     private Label label3;
     private Label label2;
+    private Label label5;
+    private Label label4;
 }
