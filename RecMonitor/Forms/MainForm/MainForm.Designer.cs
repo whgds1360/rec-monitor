@@ -29,23 +29,24 @@ partial class MainForm
     private void InitializeComponent()
     {
         TitleBar = new Panel();
+        TitleBarLabel = new Label();
         MinimizedButton = new Button();
         CloseButton = new Button();
         GPU = new Panel();
-        label3 = new Label();
-        label1 = new Label();
+        GPUTemp = new Label();
+        GPULoad = new Label();
         GPUImg = new Label();
         CPU = new Panel();
-        label2 = new Label();
+        CPULoad = new Label();
         CPUTemp = new Label();
         CPUImg = new Label();
         RAM = new Panel();
+        RAMView = new Label();
+        RAMLoad = new Label();
         RAMImg = new Label();
         SSD = new Panel();
         SSDImg = new Label();
         panel1 = new Panel();
-        label4 = new Label();
-        label5 = new Label();
         TitleBar.SuspendLayout();
         GPU.SuspendLayout();
         CPU.SuspendLayout();
@@ -55,6 +56,7 @@ partial class MainForm
         // 
         // TitleBar
         // 
+        TitleBar.Controls.Add(TitleBarLabel);
         TitleBar.Controls.Add(MinimizedButton);
         TitleBar.Controls.Add(CloseButton);
         TitleBar.Location = new Point(0, 0);
@@ -62,13 +64,25 @@ partial class MainForm
         TitleBar.Size = new Size(550, 30);
         TitleBar.TabIndex = 0;
         // 
+        // TitleBarLabel
+        // 
+        TitleBarLabel.AutoSize = true;
+        TitleBarLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+        TitleBarLabel.ForeColor = Color.PeachPuff;
+        TitleBarLabel.Location = new Point(5, 5);
+        TitleBarLabel.Name = "TitleBarLabel";
+        TitleBarLabel.Size = new Size(141, 20);
+        TitleBarLabel.TabIndex = 0;
+        TitleBarLabel.Text = "Resources monitor";
+        // 
         // MinimizedButton
         // 
         MinimizedButton.Location = new Point(500, 5);
         MinimizedButton.Name = "MinimizedButton";
         MinimizedButton.Size = new Size(20, 20);
         MinimizedButton.TabIndex = 1;
-        MinimizedButton.UseVisualStyleBackColor = true;
+        MinimizedButton.BackColor = Color.DarkGray;
+        MinimizedButton.Click += MinimizedHandeler;
         // 
         // CloseButton
         // 
@@ -76,38 +90,39 @@ partial class MainForm
         CloseButton.Name = "CloseButton";
         CloseButton.Size = new Size(20, 20);
         CloseButton.TabIndex = 0;
-        CloseButton.UseVisualStyleBackColor = true;
+        CloseButton.BackColor = Color.DarkGray;
+        CloseButton.Click += CloseHandler;
         // 
         // GPU
         // 
         GPU.BorderStyle = BorderStyle.FixedSingle;
-        GPU.Controls.Add(label3);
-        GPU.Controls.Add(label1);
+        GPU.Controls.Add(GPUTemp);
+        GPU.Controls.Add(GPULoad);
         GPU.Controls.Add(GPUImg);
         GPU.Location = new Point(0, 100);
         GPU.Name = "GPU";
         GPU.Size = new Size(150, 70);
         GPU.TabIndex = 1;
         // 
-        // label3
+        // GPUTemp
         // 
-        label3.AutoSize = true;
-        label3.Font = new Font("Impact", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
-        label3.Location = new Point(80, 41);
-        label3.Name = "label3";
-        label3.Size = new Size(41, 19);
-        label3.TabIndex = 2;
-        label3.Text = "68 °C";
+        GPUTemp.AutoSize = true;
+        GPUTemp.Font = new Font("Impact", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
+        GPUTemp.Location = new Point(80, 41);
+        GPUTemp.Name = "GPUTemp";
+        GPUTemp.Size = new Size(41, 19);
+        GPUTemp.TabIndex = 2;
+        GPUTemp.Text = "68 °C";
         // 
-        // label1
+        // GPULoad
         // 
-        label1.AutoSize = true;
-        label1.Font = new Font("Impact", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        label1.Location = new Point(76, 10);
-        label1.Name = "label1";
-        label1.Size = new Size(52, 25);
-        label1.TabIndex = 1;
-        label1.Text = "83 %";
+        GPULoad.AutoSize = true;
+        GPULoad.Font = new Font("Impact", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+        GPULoad.Location = new Point(76, 10);
+        GPULoad.Name = "GPULoad";
+        GPULoad.Size = new Size(52, 25);
+        GPULoad.TabIndex = 1;
+        GPULoad.Text = "83 %";
         // 
         // GPUImg
         // 
@@ -121,7 +136,7 @@ partial class MainForm
         // 
         CPU.BackColor = Color.FromArgb(64, 64, 64);
         CPU.BorderStyle = BorderStyle.FixedSingle;
-        CPU.Controls.Add(label2);
+        CPU.Controls.Add(CPULoad);
         CPU.Controls.Add(CPUTemp);
         CPU.Controls.Add(CPUImg);
         CPU.Location = new Point(0, 30);
@@ -129,15 +144,15 @@ partial class MainForm
         CPU.Size = new Size(150, 70);
         CPU.TabIndex = 2;
         // 
-        // label2
+        // CPULoad
         // 
-        label2.AutoSize = true;
-        label2.Font = new Font("Impact", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
-        label2.Location = new Point(76, 10);
-        label2.Name = "label2";
-        label2.Size = new Size(51, 25);
-        label2.TabIndex = 1;
-        label2.Text = "40 %";
+        CPULoad.AutoSize = true;
+        CPULoad.Font = new Font("Impact", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
+        CPULoad.Location = new Point(76, 10);
+        CPULoad.Name = "CPULoad";
+        CPULoad.Size = new Size(51, 25);
+        CPULoad.TabIndex = 1;
+        CPULoad.Text = "40 %";
         // 
         // CPUTemp
         // 
@@ -148,7 +163,6 @@ partial class MainForm
         CPUTemp.Size = new Size(41, 19);
         CPUTemp.TabIndex = 0;
         CPUTemp.Text = "38 °C";
-        CPUTemp.Click += label1_Click_1;
         // 
         // CPUImg
         // 
@@ -157,18 +171,37 @@ partial class MainForm
         CPUImg.Name = "CPUImg";
         CPUImg.Size = new Size(50, 50);
         CPUImg.TabIndex = 0;
-        CPUImg.Click += label1_Click;
         // 
         // RAM
         // 
         RAM.BorderStyle = BorderStyle.FixedSingle;
-        RAM.Controls.Add(label5);
-        RAM.Controls.Add(label4);
+        RAM.Controls.Add(RAMView);
+        RAM.Controls.Add(RAMLoad);
         RAM.Controls.Add(RAMImg);
         RAM.Location = new Point(0, 170);
         RAM.Name = "RAM";
         RAM.Size = new Size(150, 70);
         RAM.TabIndex = 2;
+        // 
+        // RAMView
+        // 
+        RAMView.AutoSize = true;
+        RAMView.Font = new Font("Impact", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
+        RAMView.Location = new Point(60, 41);
+        RAMView.Name = "RAMView";
+        RAMView.Size = new Size(84, 19);
+        RAMView.TabIndex = 3;
+        RAMView.Text = "11,7 / 15,3 ГБ";
+        // 
+        // RAMLoad
+        // 
+        RAMLoad.AutoSize = true;
+        RAMLoad.Font = new Font("Impact", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+        RAMLoad.Location = new Point(76, 10);
+        RAMLoad.Name = "RAMLoad";
+        RAMLoad.Size = new Size(46, 25);
+        RAMLoad.TabIndex = 3;
+        RAMLoad.Text = "77 %";
         // 
         // RAMImg
         // 
@@ -202,26 +235,6 @@ partial class MainForm
         panel1.Size = new Size(400, 280);
         panel1.TabIndex = 3;
         // 
-        // label4
-        // 
-        label4.AutoSize = true;
-        label4.Font = new Font("Impact", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        label4.Location = new Point(76, 10);
-        label4.Name = "label4";
-        label4.Size = new Size(46, 25);
-        label4.TabIndex = 3;
-        label4.Text = "77 %";
-        // 
-        // label5
-        // 
-        label5.AutoSize = true;
-        label5.Font = new Font("Impact", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
-        label5.Location = new Point(60, 41);
-        label5.Name = "label5";
-        label5.Size = new Size(84, 19);
-        label5.TabIndex = 3;
-        label5.Text = "11,7 / 15,3 ГБ";
-        // 
         // MainForm
         // 
         AutoScaleDimensions = new SizeF(8F, 20F);
@@ -241,6 +254,7 @@ partial class MainForm
         Name = "MainForm";
         Text = "MainForm";
         TitleBar.ResumeLayout(false);
+        TitleBar.PerformLayout();
         GPU.ResumeLayout(false);
         GPU.PerformLayout();
         CPU.ResumeLayout(false);
@@ -265,10 +279,11 @@ partial class MainForm
     private Label GPUImg;
     private Label RAMImg;
     private Label SSDImg;
-    private Label CPUTemp;
-    private Label label1;
-    private Label label3;
-    private Label label2;
-    private Label label5;
-    private Label label4;
+    public Label CPUTemp;
+    public Label GPULoad;
+    public Label GPUTemp;
+    public Label CPULoad;
+    public Label RAMView;
+    public Label RAMLoad;
+    private Label TitleBarLabel;
 }

@@ -1,19 +1,54 @@
 namespace RecMonitor;
 
-public partial class MainForm : Form
+internal partial class MainForm : Form
 {
     public MainForm()
     {
         InitializeComponent();
+        this.Load += SubscribeHandler!;
     }
 
-    private void label1_Click(object sender, EventArgs e)
-    {
-
+    private void SubscribeHandler(object sender, EventArgs e)
+    {  
+        foreach (Control element in TitleBar.Controls)
+        {
+            if (element is Button button)
+            {
+                button.MouseEnter += EnterHandler!;
+                button.MouseLeave += LeaveHandler!;
+            }
+        }
     }
 
-    private void label1_Click_1(object sender, EventArgs e)
+    private void EnterHandler(object sender, EventArgs e)
     {
+        switch (sender)
+        {
+            case Button btn when btn == CloseButton:
+                CloseButton.BackColor = Color.LightGray;
+                break;
 
+            case Button btn when btn == MinimizedButton:
+                MinimizedButton.BackColor = Color.LightGray;
+                break;
+        }
+    }
+
+    private void LeaveHandler(object sender, EventArgs e)
+    {
+        if (sender is Button button)
+        {
+            button.BackColor = Color.DarkGray;
+        }
+    }
+
+    private void MinimizedHandeler(object sender, EventArgs e)
+    {
+        this.WindowState = FormWindowState.Minimized;
+    }
+
+    private void CloseHandler(object sender, EventArgs e)
+    {
+        this.Close();
     }
 }
