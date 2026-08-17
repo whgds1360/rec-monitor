@@ -1,54 +1,51 @@
+using RecMonitor.Services.Metric;
+
 namespace RecMonitor;
 
 internal partial class MainForm : Form
 {
+    private System.Windows.Forms.Timer? _timer;
+    private RecMonitor.Services.Metric.MetricManager _metricManager = new MetricManager();
+
     public MainForm()
     {
         InitializeComponent();
-        this.Load += SubscribeHandler!;
+        TimerInit();
     }
 
-    private void SubscribeHandler(object sender, EventArgs e)
-    {  
-        foreach (Control element in TitleBar.Controls)
-        {
-            if (element is Button button)
-            {
-                button.MouseEnter += EnterHandler!;
-                button.MouseLeave += LeaveHandler!;
-            }
-        }
-    }
-
-    private void EnterHandler(object sender, EventArgs e)
+    private void TimerInit()
     {
-        switch (sender)
-        {
-            case Button btn when btn == CloseButton:
-                CloseButton.BackColor = Color.LightGray;
-                break;
-
-            case Button btn when btn == MinimizedButton:
-                MinimizedButton.BackColor = Color.LightGray;
-                break;
-        }
+        _timer = new System.Windows.Forms.Timer();
+        _timer.Interval = 100;
+        _timer.Tick += TimerTick;
+        _timer.Start();
     }
 
-    private void LeaveHandler(object sender, EventArgs e)
+    private void TimerTick(object? sender, EventArgs e)
     {
-        if (sender is Button button)
-        {
-            button.BackColor = Color.DarkGray;
-        }
+        var data = _metricManager.GetMetricInfo();
+        if (data == null) return;
+
+        var cpu = data["CPU"] as Dictionary<string, float?>;
+        var gpu = data["GPU"] as Dictionary<string, float?>;
+        var ram = data["RAM"] as Dictionary<string, float?>;
+
+        this.CPULoad.Text = cpu.GetValueOrDefault("Load")?.ToString() ?? "0";
+        this.CPUTemp.Text = cpu.GetValueOrDefault("Temp")?.ToString() ?? "0";
+        //this.CPULoad.Text = cpu["Load"].ToString();
+
+        this.GPULoad.Text = gpu.GetValueOrDefault("Load")?.ToString() ?? "0";
+        this.GPUTemp.Text = gpu.GetValueOrDefault("Temp")?.ToString() ?? "0";
+        //this.CPULoad.Text = gpu["Load"].ToString();
+
+        this.RAMLoad.Text = ram.GetValueOrDefault("Load")?.ToString() ?? "0";
+        //this.CPULoad.Text = ram["Load"].ToString();
     }
 
-    private void MinimizedHandeler(object sender, EventArgs e)
+    protected override void OnFormClosing(FormClosingEventArgs e)
     {
-        this.WindowState = FormWindowState.Minimized;
-    }
-
-    private void CloseHandler(object sender, EventArgs e)
-    {
-        this.Close();
+        _timer?.Stop();
+        _timer?.Dispose();
+        base.OnFormClosing(e);
     }
 }
