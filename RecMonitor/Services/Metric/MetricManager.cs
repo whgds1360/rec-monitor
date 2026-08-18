@@ -100,7 +100,7 @@ namespace RecMonitor.Services.Metric
             var gpuData = new Dictionary<string, float?>();
             foreach (var hardware in computer.Hardware)
             {
-                if (hardware.HardwareType != HardwareType.GpuAmd && hardware.HardwareType != HardwareType.GpuAmd)
+                if (hardware.HardwareType != HardwareType.GpuNvidia && hardware.HardwareType != HardwareType.GpuAmd)
                     continue;
                 hardware.Update();
 
@@ -135,7 +135,7 @@ namespace RecMonitor.Services.Metric
         {
             foreach (var hardware in computer.Hardware)
             {
-                if (hardware.HardwareType != HardwareType.GpuAmd) continue;
+                if (hardware.HardwareType != HardwareType.GpuNvidia) continue;
                 hardware.Update();
 
                 MessageBox.Show($"=== {hardware.Name} ===");
