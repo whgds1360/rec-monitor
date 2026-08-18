@@ -28,15 +28,16 @@ partial class MainForm
     /// </summary>
     private void InitializeComponent()
     {
+        System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
         backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
         BackGround = new AcrylicUI.Controls.AcrylicLabel();
         CPULoad = new AcrylicUI.Controls.AcrylicTransparentLabel();
         GPULoad = new AcrylicUI.Controls.AcrylicTransparentLabel();
         RAMLoad = new AcrylicUI.Controls.AcrylicTransparentLabel();
-        CPUTemp = new AcrylicUI.Controls.AcrylicLabel();
-        CPUFreq = new AcrylicUI.Controls.AcrylicLabel();
-        GPUTemp = new AcrylicUI.Controls.AcrylicLabel();
-        GPUFreq = new AcrylicUI.Controls.AcrylicLabel();
+        CPUTemp = new AcrylicUI.Controls.AcrylicTransparentLabel();
+        CPUFreq = new AcrylicUI.Controls.AcrylicTransparentLabel();
+        GPUTemp = new AcrylicUI.Controls.AcrylicTransparentLabel();
+        GPUFreq = new AcrylicUI.Controls.AcrylicTransparentLabel();
         SuspendLayout();
         // 
         // BackGround
@@ -87,47 +88,51 @@ partial class MainForm
         // 
         // CPUTemp
         // 
-        CPUTemp.AutoSize = true;
         CPUTemp.Font = new Font("Impact", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
         CPUTemp.ForeColor = Color.LightSkyBlue;
         CPUTemp.Location = new Point(170, 98);
         CPUTemp.Name = "CPUTemp";
         CPUTemp.Size = new Size(27, 20);
         CPUTemp.TabIndex = 4;
+        CPUTemp.TabStop = false;
         CPUTemp.Text = "60";
+        CPUTemp.TextAlign = ContentAlignment.TopLeft;
         // 
         // CPUFreq
         // 
-        CPUFreq.AutoSize = true;
         CPUFreq.Font = new Font("Impact", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
         CPUFreq.ForeColor = Color.LightSkyBlue;
-        CPUFreq.Location = new Point(170, 123);
+        CPUFreq.Location = new Point(164, 124);
         CPUFreq.Name = "CPUFreq";
-        CPUFreq.Size = new Size(28, 20);
+        CPUFreq.Size = new Size(39, 20);
         CPUFreq.TabIndex = 5;
-        CPUFreq.Text = "4,2";
+        CPUFreq.TabStop = false;
+        CPUFreq.Text = "1999";
+        CPUFreq.TextAlign = ContentAlignment.TopLeft;
         // 
         // GPUTemp
         // 
-        GPUTemp.AutoSize = true;
         GPUTemp.Font = new Font("Impact", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
         GPUTemp.ForeColor = Color.Violet;
         GPUTemp.Location = new Point(170, 219);
         GPUTemp.Name = "GPUTemp";
         GPUTemp.Size = new Size(26, 20);
         GPUTemp.TabIndex = 6;
+        GPUTemp.TabStop = false;
         GPUTemp.Text = "46";
+        GPUTemp.TextAlign = ContentAlignment.TopLeft;
         // 
         // GPUFreq
         // 
-        GPUFreq.AutoSize = true;
         GPUFreq.Font = new Font("Impact", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
         GPUFreq.ForeColor = Color.Violet;
-        GPUFreq.Location = new Point(170, 244);
+        GPUFreq.Location = new Point(164, 244);
         GPUFreq.Name = "GPUFreq";
-        GPUFreq.Size = new Size(26, 20);
+        GPUFreq.Size = new Size(42, 20);
         GPUFreq.TabIndex = 7;
-        GPUFreq.Text = "2,7";
+        GPUFreq.TabStop = false;
+        GPUFreq.Text = "1999";
+        GPUFreq.TextAlign = ContentAlignment.TopLeft;
         // 
         // MainForm
         // 
@@ -146,6 +151,7 @@ partial class MainForm
         Controls.Add(BackGround);
         ForeColor = Color.Transparent;
         FormBorderStyle = FormBorderStyle.None;
+        Icon = (Icon)resources.GetObject("$this.Icon");
         IsAcrylic = false;
         Location = new Point(0, 0);
         Margin = new Padding(3, 2, 3, 2);
@@ -154,7 +160,6 @@ partial class MainForm
         StartPosition = FormStartPosition.Manual;
         Text = "System monitor";
         ResumeLayout(false);
-        PerformLayout();
     }
 
     #endregion
@@ -163,8 +168,8 @@ partial class MainForm
     private AcrylicUI.Controls.AcrylicTransparentLabel CPULoad;
     private AcrylicUI.Controls.AcrylicTransparentLabel GPULoad;
     private AcrylicUI.Controls.AcrylicTransparentLabel RAMLoad;
-    private AcrylicUI.Controls.AcrylicLabel CPUTemp;
-    private AcrylicUI.Controls.AcrylicLabel CPUFreq;
-    private AcrylicUI.Controls.AcrylicLabel GPUTemp;
-    private AcrylicUI.Controls.AcrylicLabel GPUFreq;
+    private AcrylicUI.Controls.AcrylicTransparentLabel CPUTemp;
+    private AcrylicUI.Controls.AcrylicTransparentLabel CPUFreq;
+    private AcrylicUI.Controls.AcrylicTransparentLabel GPUTemp;
+    private AcrylicUI.Controls.AcrylicTransparentLabel GPUFreq;
 }

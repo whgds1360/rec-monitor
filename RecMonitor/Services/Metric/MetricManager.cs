@@ -135,7 +135,7 @@ namespace RecMonitor.Services.Metric
         {
             foreach (var hardware in computer.Hardware)
             {
-                if (hardware.HardwareType != HardwareType.GpuNvidia) continue;
+                if (hardware.HardwareType != HardwareType.Cpu) continue;
                 hardware.Update();
 
                 MessageBox.Show($"=== {hardware.Name} ===");
