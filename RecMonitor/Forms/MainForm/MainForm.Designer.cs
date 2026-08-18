@@ -28,262 +28,148 @@ partial class MainForm
     /// </summary>
     private void InitializeComponent()
     {
-        TitleBar = new Panel();
-        TitleBarLabel = new Label();
-        MinimizedButton = new Button();
-        CloseButton = new Button();
-        GPU = new Panel();
-        GPUTemp = new Label();
-        GPULoad = new Label();
-        GPUImg = new Label();
-        CPU = new Panel();
-        CPULoad = new Label();
-        CPUTemp = new Label();
-        CPUImg = new Label();
-        RAM = new Panel();
-        RAMView = new Label();
-        RAMLoad = new Label();
-        RAMImg = new Label();
-        SSD = new Panel();
-        SSDImg = new Label();
-        panel1 = new Panel();
-        TitleBar.SuspendLayout();
-        GPU.SuspendLayout();
-        CPU.SuspendLayout();
-        RAM.SuspendLayout();
-        SSD.SuspendLayout();
+        System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+        backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+        BackGround = new AcrylicUI.Controls.AcrylicLabel();
+        CPULoad = new AcrylicUI.Controls.AcrylicTransparentLabel();
+        GPULoad = new AcrylicUI.Controls.AcrylicTransparentLabel();
+        RAMLoad = new AcrylicUI.Controls.AcrylicTransparentLabel();
+        CPUTemp = new AcrylicUI.Controls.AcrylicTransparentLabel();
+        CPUFreq = new AcrylicUI.Controls.AcrylicTransparentLabel();
+        GPUTemp = new AcrylicUI.Controls.AcrylicTransparentLabel();
+        GPUFreq = new AcrylicUI.Controls.AcrylicTransparentLabel();
         SuspendLayout();
         // 
-        // TitleBar
+        // BackGround
         // 
-        TitleBar.Controls.Add(TitleBarLabel);
-        TitleBar.Controls.Add(MinimizedButton);
-        TitleBar.Controls.Add(CloseButton);
-        TitleBar.Location = new Point(0, 0);
-        TitleBar.Name = "TitleBar";
-        TitleBar.Size = new Size(550, 30);
-        TitleBar.TabIndex = 0;
-        // 
-        // TitleBarLabel
-        // 
-        TitleBarLabel.AutoSize = true;
-        TitleBarLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-        TitleBarLabel.ForeColor = Color.PeachPuff;
-        TitleBarLabel.Location = new Point(5, 5);
-        TitleBarLabel.Name = "TitleBarLabel";
-        TitleBarLabel.Size = new Size(141, 20);
-        TitleBarLabel.TabIndex = 0;
-        TitleBarLabel.Text = "Resources monitor";
-        // 
-        // MinimizedButton
-        // 
-        MinimizedButton.Location = new Point(500, 5);
-        MinimizedButton.Name = "MinimizedButton";
-        MinimizedButton.Size = new Size(20, 20);
-        MinimizedButton.TabIndex = 1;
-        MinimizedButton.BackColor = Color.DarkGray;
-        MinimizedButton.Click += MinimizedHandeler;
-        // 
-        // CloseButton
-        // 
-        CloseButton.Location = new Point(525, 5);
-        CloseButton.Name = "CloseButton";
-        CloseButton.Size = new Size(20, 20);
-        CloseButton.TabIndex = 0;
-        CloseButton.BackColor = Color.DarkGray;
-        CloseButton.Click += CloseHandler;
-        // 
-        // GPU
-        // 
-        GPU.BorderStyle = BorderStyle.FixedSingle;
-        GPU.Controls.Add(GPUTemp);
-        GPU.Controls.Add(GPULoad);
-        GPU.Controls.Add(GPUImg);
-        GPU.Location = new Point(0, 100);
-        GPU.Name = "GPU";
-        GPU.Size = new Size(150, 70);
-        GPU.TabIndex = 1;
-        // 
-        // GPUTemp
-        // 
-        GPUTemp.AutoSize = true;
-        GPUTemp.Font = new Font("Impact", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
-        GPUTemp.Location = new Point(80, 41);
-        GPUTemp.Name = "GPUTemp";
-        GPUTemp.Size = new Size(41, 19);
-        GPUTemp.TabIndex = 2;
-        GPUTemp.Text = "68 °C";
-        // 
-        // GPULoad
-        // 
-        GPULoad.AutoSize = true;
-        GPULoad.Font = new Font("Impact", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        GPULoad.Location = new Point(76, 10);
-        GPULoad.Name = "GPULoad";
-        GPULoad.Size = new Size(52, 25);
-        GPULoad.TabIndex = 1;
-        GPULoad.Text = "83 %";
-        // 
-        // GPUImg
-        // 
-        GPUImg.BackColor = Color.Red;
-        GPUImg.Location = new Point(5, 10);
-        GPUImg.Name = "GPUImg";
-        GPUImg.Size = new Size(50, 50);
-        GPUImg.TabIndex = 1;
-        // 
-        // CPU
-        // 
-        CPU.BackColor = Color.FromArgb(64, 64, 64);
-        CPU.BorderStyle = BorderStyle.FixedSingle;
-        CPU.Controls.Add(CPULoad);
-        CPU.Controls.Add(CPUTemp);
-        CPU.Controls.Add(CPUImg);
-        CPU.Location = new Point(0, 30);
-        CPU.Name = "CPU";
-        CPU.Size = new Size(150, 70);
-        CPU.TabIndex = 2;
+        BackGround.Dock = DockStyle.Fill;
+        BackGround.ForeColor = Color.FromArgb(192, 192, 192);
+        BackGround.Image = Properties.Resources.photo_2026_08_18_07_14_171;
+        BackGround.Location = new Point(0, 0);
+        BackGround.Name = "BackGround";
+        BackGround.Size = new Size(249, 450);
+        BackGround.TabIndex = 0;
         // 
         // CPULoad
         // 
-        CPULoad.AutoSize = true;
-        CPULoad.Font = new Font("Impact", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
-        CPULoad.Location = new Point(76, 10);
+        CPULoad.Font = new Font("Impact", 27.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
+        CPULoad.ForeColor = Color.LightSkyBlue;
+        CPULoad.Location = new Point(70, 100);
         CPULoad.Name = "CPULoad";
-        CPULoad.Size = new Size(51, 25);
+        CPULoad.Size = new Size(62, 42);
         CPULoad.TabIndex = 1;
-        CPULoad.Text = "40 %";
+        CPULoad.TabStop = false;
+        CPULoad.Text = "100";
+        CPULoad.TextAlign = ContentAlignment.TopLeft;
         // 
-        // CPUTemp
+        // GPULoad
         // 
-        CPUTemp.AutoSize = true;
-        CPUTemp.Font = new Font("Impact", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
-        CPUTemp.Location = new Point(80, 41);
-        CPUTemp.Name = "CPUTemp";
-        CPUTemp.Size = new Size(41, 19);
-        CPUTemp.TabIndex = 0;
-        CPUTemp.Text = "38 °C";
-        // 
-        // CPUImg
-        // 
-        CPUImg.BackColor = Color.Red;
-        CPUImg.Location = new Point(5, 10);
-        CPUImg.Name = "CPUImg";
-        CPUImg.Size = new Size(50, 50);
-        CPUImg.TabIndex = 0;
-        // 
-        // RAM
-        // 
-        RAM.BorderStyle = BorderStyle.FixedSingle;
-        RAM.Controls.Add(RAMView);
-        RAM.Controls.Add(RAMLoad);
-        RAM.Controls.Add(RAMImg);
-        RAM.Location = new Point(0, 170);
-        RAM.Name = "RAM";
-        RAM.Size = new Size(150, 70);
-        RAM.TabIndex = 2;
-        // 
-        // RAMView
-        // 
-        RAMView.AutoSize = true;
-        RAMView.Font = new Font("Impact", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
-        RAMView.Location = new Point(60, 41);
-        RAMView.Name = "RAMView";
-        RAMView.Size = new Size(84, 19);
-        RAMView.TabIndex = 3;
-        RAMView.Text = "11,7 / 15,3 ГБ";
+        GPULoad.Font = new Font("Impact", 27.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
+        GPULoad.ForeColor = Color.Violet;
+        GPULoad.Location = new Point(70, 221);
+        GPULoad.Name = "GPULoad";
+        GPULoad.Size = new Size(62, 42);
+        GPULoad.TabIndex = 2;
+        GPULoad.TabStop = false;
+        GPULoad.Text = "100";
+        GPULoad.TextAlign = ContentAlignment.TopLeft;
         // 
         // RAMLoad
         // 
-        RAMLoad.AutoSize = true;
-        RAMLoad.Font = new Font("Impact", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        RAMLoad.Location = new Point(76, 10);
+        RAMLoad.Font = new Font("Impact", 27.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
+        RAMLoad.ForeColor = Color.LightGreen;
+        RAMLoad.Location = new Point(70, 340);
         RAMLoad.Name = "RAMLoad";
-        RAMLoad.Size = new Size(46, 25);
+        RAMLoad.Size = new Size(62, 42);
         RAMLoad.TabIndex = 3;
-        RAMLoad.Text = "77 %";
+        RAMLoad.TabStop = false;
+        RAMLoad.Text = "100";
+        RAMLoad.TextAlign = ContentAlignment.TopLeft;
         // 
-        // RAMImg
+        // CPUTemp
         // 
-        RAMImg.BackColor = Color.Red;
-        RAMImg.Location = new Point(5, 10);
-        RAMImg.Name = "RAMImg";
-        RAMImg.Size = new Size(50, 50);
-        RAMImg.TabIndex = 2;
+        CPUTemp.Font = new Font("Impact", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
+        CPUTemp.ForeColor = Color.LightSkyBlue;
+        CPUTemp.Location = new Point(170, 98);
+        CPUTemp.Name = "CPUTemp";
+        CPUTemp.Size = new Size(27, 20);
+        CPUTemp.TabIndex = 4;
+        CPUTemp.TabStop = false;
+        CPUTemp.Text = "60";
+        CPUTemp.TextAlign = ContentAlignment.TopLeft;
         // 
-        // SSD
+        // CPUFreq
         // 
-        SSD.BorderStyle = BorderStyle.FixedSingle;
-        SSD.Controls.Add(SSDImg);
-        SSD.Location = new Point(0, 240);
-        SSD.Name = "SSD";
-        SSD.Size = new Size(150, 70);
-        SSD.TabIndex = 2;
+        CPUFreq.Font = new Font("Impact", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
+        CPUFreq.ForeColor = Color.LightSkyBlue;
+        CPUFreq.Location = new Point(164, 124);
+        CPUFreq.Name = "CPUFreq";
+        CPUFreq.Size = new Size(39, 20);
+        CPUFreq.TabIndex = 5;
+        CPUFreq.TabStop = false;
+        CPUFreq.Text = "1999";
+        CPUFreq.TextAlign = ContentAlignment.TopLeft;
         // 
-        // SSDImg
+        // GPUTemp
         // 
-        SSDImg.BackColor = Color.Red;
-        SSDImg.Location = new Point(5, 10);
-        SSDImg.Name = "SSDImg";
-        SSDImg.Size = new Size(50, 50);
-        SSDImg.TabIndex = 3;
+        GPUTemp.Font = new Font("Impact", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
+        GPUTemp.ForeColor = Color.Violet;
+        GPUTemp.Location = new Point(170, 219);
+        GPUTemp.Name = "GPUTemp";
+        GPUTemp.Size = new Size(26, 20);
+        GPUTemp.TabIndex = 6;
+        GPUTemp.TabStop = false;
+        GPUTemp.Text = "46";
+        GPUTemp.TextAlign = ContentAlignment.TopLeft;
         // 
-        // panel1
+        // GPUFreq
         // 
-        panel1.Location = new Point(150, 30);
-        panel1.Name = "panel1";
-        panel1.Size = new Size(400, 280);
-        panel1.TabIndex = 3;
+        GPUFreq.Font = new Font("Impact", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
+        GPUFreq.ForeColor = Color.Violet;
+        GPUFreq.Location = new Point(164, 244);
+        GPUFreq.Name = "GPUFreq";
+        GPUFreq.Size = new Size(42, 20);
+        GPUFreq.TabIndex = 7;
+        GPUFreq.TabStop = false;
+        GPUFreq.Text = "1999";
+        GPUFreq.TextAlign = ContentAlignment.TopLeft;
         // 
         // MainForm
         // 
-        AutoScaleDimensions = new SizeF(8F, 20F);
+        AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
         BackColor = Color.FromArgb(64, 64, 64);
-        ClientSize = new Size(550, 310);
-        Controls.Add(panel1);
-        Controls.Add(SSD);
-        Controls.Add(RAM);
-        Controls.Add(CPU);
-        Controls.Add(GPU);
-        Controls.Add(TitleBar);
-        ForeColor = SystemColors.Control;
+        BackgroundImageLayout = ImageLayout.Stretch;
+        ClientSize = new Size(249, 450);
+        Controls.Add(GPUFreq);
+        Controls.Add(GPUTemp);
+        Controls.Add(CPUFreq);
+        Controls.Add(CPUTemp);
+        Controls.Add(RAMLoad);
+        Controls.Add(GPULoad);
+        Controls.Add(CPULoad);
+        Controls.Add(BackGround);
+        ForeColor = Color.Transparent;
         FormBorderStyle = FormBorderStyle.None;
-        MaximumSize = new Size(550, 310);
-        MinimumSize = new Size(550, 310);
+        Icon = (Icon)resources.GetObject("$this.Icon");
+        IsAcrylic = false;
+        Location = new Point(0, 0);
+        Margin = new Padding(3, 2, 3, 2);
         Name = "MainForm";
-        Text = "MainForm";
-        TitleBar.ResumeLayout(false);
-        TitleBar.PerformLayout();
-        GPU.ResumeLayout(false);
-        GPU.PerformLayout();
-        CPU.ResumeLayout(false);
-        CPU.PerformLayout();
-        RAM.ResumeLayout(false);
-        RAM.PerformLayout();
-        SSD.ResumeLayout(false);
+        Opacity = 0.9D;
+        StartPosition = FormStartPosition.Manual;
+        Text = "System monitor";
         ResumeLayout(false);
     }
 
     #endregion
-
-    private Panel TitleBar;
-    private Panel GPU;
-    private Panel CPU;
-    private Panel RAM;
-    private Panel SSD;
-    private Panel panel1;
-    private Button MinimizedButton;
-    private Button CloseButton;
-    private Label CPUImg;
-    private Label GPUImg;
-    private Label RAMImg;
-    private Label SSDImg;
-    public Label CPUTemp;
-    public Label GPULoad;
-    public Label GPUTemp;
-    public Label CPULoad;
-    public Label RAMView;
-    public Label RAMLoad;
-    private Label TitleBarLabel;
+    private System.ComponentModel.BackgroundWorker backgroundWorker1;
+    private AcrylicUI.Controls.AcrylicLabel BackGround;
+    private AcrylicUI.Controls.AcrylicTransparentLabel CPULoad;
+    private AcrylicUI.Controls.AcrylicTransparentLabel GPULoad;
+    private AcrylicUI.Controls.AcrylicTransparentLabel RAMLoad;
+    private AcrylicUI.Controls.AcrylicTransparentLabel CPUTemp;
+    private AcrylicUI.Controls.AcrylicTransparentLabel CPUFreq;
+    private AcrylicUI.Controls.AcrylicTransparentLabel GPUTemp;
+    private AcrylicUI.Controls.AcrylicTransparentLabel GPUFreq;
 }
