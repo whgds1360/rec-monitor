@@ -4,7 +4,7 @@ using AcrylicUI.Forms;
 namespace RecMonitor;
 
 internal partial class MainForm : AcrylicForm
-{
+{   
     private System.Windows.Forms.Timer? _timer;
     private MetricManager _metricManager = new MetricManager();
 
@@ -47,10 +47,5 @@ internal partial class MainForm : AcrylicForm
         _timer?.Stop();
         _timer?.Dispose();
         base.OnFormClosing(e);
-    }
-
-    private void acrylicLabel1_Click(object sender, EventArgs e)
-    {
-
     }
 }

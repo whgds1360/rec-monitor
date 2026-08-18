@@ -48,7 +48,6 @@ partial class MainForm
         BackGround.Name = "BackGround";
         BackGround.Size = new Size(249, 450);
         BackGround.TabIndex = 0;
-        BackGround.Click += acrylicLabel1_Click;
         // 
         // CPULoad
         // 
