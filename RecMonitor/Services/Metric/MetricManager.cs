@@ -5,7 +5,7 @@ namespace RecMonitor.Services.Metric
 {
     internal class MetricManager
     {
-        private Computer? computer; 
+        private Computer? computer;
 
         public MetricManager()
         {
@@ -27,7 +27,7 @@ namespace RecMonitor.Services.Metric
         public Dictionary<string, Dictionary<string, float?>>? GetMetricInfo()
         {
             try
-            {   
+            {
                 if (this.computer is null)
                 {
                     throw new ArgumentNullException("Ошибка инициализации сборщика метриков");
@@ -49,7 +49,7 @@ namespace RecMonitor.Services.Metric
             }
 
             catch (Exception error)
-            {   
+            {
                 MessageBox.Show($"Ошибка: {error.Message}");
                 return null;
             }
@@ -64,29 +64,25 @@ namespace RecMonitor.Services.Metric
                 hardware.Update();
                 if (hardware.HardwareType == HardwareType.Cpu)
                 {
-                    foreach (var subHardware in hardware.SubHardware)
+                    foreach (var sensor in hardware.Sensors)
                     {
-                        subHardware.Update();
-                        foreach (var sensor in hardware.Sensors)
+                        switch (sensor.SensorType)
                         {
-                            switch (sensor.SensorType)
-                            {
-                                case SensorType.Load:
-                                    {
-                                        CPUData["Load"] = sensor.Value;
-                                        break;
-                                    }
-                                case SensorType.Temperature:
-                                    {
-                                        CPUData["Temp"] = sensor.Value;
-                                        break;
-                                    }
-                                case SensorType.Frequency:
-                                    {
-                                        CPUData["Freq"] = sensor.Value;
-                                        break;
-                                    }
-                            }
+                            case SensorType.Load:
+                                {
+                                    CPUData["Load"] = sensor.Value;
+                                    break;
+                                }
+                            case SensorType.Temperature:
+                                {
+                                    CPUData["Temp"] = sensor.Value;
+                                    break;
+                                }
+                            case SensorType.Frequency:
+                                {
+                                    CPUData["Freq"] = sensor.Value;
+                                    break;
+                                }
                         }
                     }
                 }
@@ -104,29 +100,25 @@ namespace RecMonitor.Services.Metric
                 hardware.Update();
                 if (hardware.HardwareType == HardwareType.GpuNvidia)
                 {
-                    foreach (var subHardware in hardware.SubHardware)
+                    foreach (var sensor in hardware.Sensors)
                     {
-                        subHardware.Update();
-                        foreach (var sensor in hardware.Sensors)
+                        switch (sensor.SensorType)
                         {
-                            switch (sensor.SensorType)
-                            {
-                                case SensorType.Load:
-                                    {
-                                        GPUData["Load"] = sensor.Value;
-                                        break;
-                                    }
-                                case SensorType.Temperature:
-                                    {
-                                        GPUData["Temp"] = sensor.Value;
-                                        break;
-                                    }
-                                case SensorType.Frequency:
-                                    {
-                                        GPUData["Freq"] = sensor.Value;
-                                        break;
-                                    }
-                            }
+                            case SensorType.Load:
+                                {
+                                    GPUData["Load"] = sensor.Value;
+                                    break;
+                                }
+                            case SensorType.Temperature:
+                                {
+                                    GPUData["Temp"] = sensor.Value;
+                                    break;
+                                }
+                            case SensorType.Frequency:
+                                {
+                                    GPUData["Freq"] = sensor.Value;
+                                    break;
+                                }
                         }
                     }
                 }
@@ -144,24 +136,20 @@ namespace RecMonitor.Services.Metric
                 hardware.Update();
                 if (hardware.HardwareType == HardwareType.Memory)
                 {
-                    foreach (var subHardware in hardware.SubHardware)
+                    foreach (var sensor in hardware.Sensors)
                     {
-                        subHardware.Update();
-                        foreach (var sensor in hardware.Sensors)
+                        switch (sensor.SensorType)
                         {
-                            switch (sensor.SensorType)
-                            {
-                                case SensorType.Frequency:
-                                    {
-                                        RAMData["Freq"] = sensor.Value;
-                                        break;
-                                    }
-                                case SensorType.Data:
-                                    {
-                                        RAMData["Load"] = sensor.Value; // в формате "исп/своб ГБ"
-                                        break;
-                                    }
-                            }
+                            case SensorType.Frequency:
+                                {
+                                    RAMData["Freq"] = sensor.Value;
+                                    break;
+                                }
+                            case SensorType.Data:
+                                {
+                                    RAMData["Load"] = sensor.Value; // в формате "исп/своб ГБ"
+                                    break;
+                                }
                         }
                     }
                 }

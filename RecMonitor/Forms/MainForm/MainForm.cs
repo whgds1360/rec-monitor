@@ -1,11 +1,12 @@
 using RecMonitor.Services.Metric;
+using AcrylicUI.Forms;
 
 namespace RecMonitor;
 
-internal partial class MainForm : Form
+internal partial class MainForm : AcrylicForm
 {
     private System.Windows.Forms.Timer? _timer;
-    private RecMonitor.Services.Metric.MetricManager _metricManager = new MetricManager();
+    private MetricManager _metricManager = new MetricManager();
 
     public MainForm()
     {
@@ -30,15 +31,15 @@ internal partial class MainForm : Form
         var gpu = data["GPU"] as Dictionary<string, float?>;
         var ram = data["RAM"] as Dictionary<string, float?>;
 
-        this.CPULoad.Text = cpu.GetValueOrDefault("Load")?.ToString() ?? "0";
-        this.CPUTemp.Text = cpu.GetValueOrDefault("Temp")?.ToString() ?? "0";
+        this.CPULoad.Text = (Convert.ToInt32(cpu?.GetValueOrDefault("Load"))).ToString();
+        this.CPUTemp.Text = (Convert.ToUInt32(cpu?.GetValueOrDefault("Temp"))).ToString();
         //this.CPULoad.Text = cpu["Load"].ToString();
 
-        this.GPULoad.Text = gpu.GetValueOrDefault("Load")?.ToString() ?? "0";
-        this.GPUTemp.Text = gpu.GetValueOrDefault("Temp")?.ToString() ?? "0";
+        this.GPULoad.Text = (Convert.ToInt32(gpu?.GetValueOrDefault("Load"))).ToString();
+        this.GPUTemp.Text = (Convert.ToInt32(gpu?.GetValueOrDefault("Temp"))).ToString();
         //this.CPULoad.Text = gpu["Load"].ToString();
 
-        this.RAMLoad.Text = ram.GetValueOrDefault("Load")?.ToString() ?? "0";
+        this.RAMLoad.Text = (Convert.ToUInt32(ram?.GetValueOrDefault("Load"))).ToString();
         //this.CPULoad.Text = ram["Load"].ToString();
     }
 
