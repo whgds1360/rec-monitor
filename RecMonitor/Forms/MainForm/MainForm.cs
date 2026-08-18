@@ -33,14 +33,13 @@ internal partial class MainForm : AcrylicForm
 
         this.CPULoad.Text = (Convert.ToInt32(cpu?.GetValueOrDefault("Load"))).ToString();
         this.CPUTemp.Text = (Convert.ToUInt32(cpu?.GetValueOrDefault("Temp"))).ToString();
-        //this.CPULoad.Text = cpu["Load"].ToString();
+        this.CPUFreq.Text = (Convert.ToUInt32(cpu?.GetValueOrDefault("Freq"))).ToString();
 
         this.GPULoad.Text = (Convert.ToInt32(gpu?.GetValueOrDefault("Load"))).ToString();
         this.GPUTemp.Text = (Convert.ToInt32(gpu?.GetValueOrDefault("Temp"))).ToString();
-        //this.CPULoad.Text = gpu["Load"].ToString();
+        this.GPUFreq.Text = (Convert.ToInt32(gpu?.GetValueOrDefault("Freq"))).ToString();
 
         this.RAMLoad.Text = (Convert.ToUInt32(ram?.GetValueOrDefault("Load"))).ToString();
-        //this.CPULoad.Text = ram["Load"].ToString();
     }
 
     protected override void OnFormClosing(FormClosingEventArgs e)
@@ -48,5 +47,10 @@ internal partial class MainForm : AcrylicForm
         _timer?.Stop();
         _timer?.Dispose();
         base.OnFormClosing(e);
+    }
+
+    private void acrylicLabel1_Click(object sender, EventArgs e)
+    {
+
     }
 }

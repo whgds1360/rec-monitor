@@ -140,11 +140,6 @@ namespace RecMonitor.Services.Metric
                     {
                         switch (sensor.SensorType)
                         {
-                            case SensorType.Frequency:
-                                {
-                                    RAMData["Freq"] = sensor.Value;
-                                    break;
-                                }
                             case SensorType.Data:
                                 {
                                     RAMData["Load"] = sensor.Value; // в формате "исп/своб ГБ"
