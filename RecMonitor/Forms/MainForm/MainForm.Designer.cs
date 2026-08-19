@@ -236,8 +236,13 @@ partial class MainForm
         panel1.TabIndex = 3;
         // 
         // MainForm
+<<<<<<< HEAD
         // 
         AutoScaleDimensions = new SizeF(8F, 20F);
+=======
+        //
+        AutoScaleDimensions = new SizeF(7F, 15F);
+>>>>>>> 8b1a561 (Пофиксил проблему когда мониторинг перекрывался другими приложениями)
         AutoScaleMode = AutoScaleMode.Font;
         BackColor = Color.FromArgb(64, 64, 64);
         ClientSize = new Size(550, 310);
@@ -252,6 +257,7 @@ partial class MainForm
         MaximumSize = new Size(550, 310);
         MinimumSize = new Size(550, 310);
         Name = "MainForm";
+<<<<<<< HEAD
         Text = "MainForm";
         TitleBar.ResumeLayout(false);
         TitleBar.PerformLayout();
@@ -262,6 +268,12 @@ partial class MainForm
         RAM.ResumeLayout(false);
         RAM.PerformLayout();
         SSD.ResumeLayout(false);
+=======
+        Opacity = 0.9D;
+        StartPosition = FormStartPosition.Manual;
+        Text = "System monitor";
+        TopMost = true;
+>>>>>>> 8b1a561 (Пофиксил проблему когда мониторинг перекрывался другими приложениями)
         ResumeLayout(false);
     }
 
