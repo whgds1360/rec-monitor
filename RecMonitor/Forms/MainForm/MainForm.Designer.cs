@@ -135,7 +135,7 @@ partial class MainForm
         GPUFreq.TextAlign = ContentAlignment.TopLeft;
         // 
         // MainForm
-        // 
+        //
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
         BackColor = Color.FromArgb(64, 64, 64);
@@ -159,6 +159,7 @@ partial class MainForm
         Opacity = 0.9D;
         StartPosition = FormStartPosition.Manual;
         Text = "System monitor";
+        TopMost = true;
         ResumeLayout(false);
     }
 

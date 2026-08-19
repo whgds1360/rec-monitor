@@ -1,6 +1,5 @@
 using AcrylicUI.Forms;
 using RecMonitor.Services.Metric;
-using System.Linq;
 
 namespace RecMonitor;
 
