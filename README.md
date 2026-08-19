@@ -10,5 +10,5 @@
 - **🎨 Минималистичный интерфейс**: Простой и понятный дизайн, сфокусированный на главном.
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/whgds1360/rec-monitor/ScreenShots/screenshot.png" alt="System Monitor">
+  <img src="https://raw.githubusercontent.com/whgds1360/rec-monitor/refs/heads/main/ScreenShots/screenshot.png" alt="System Monitor">
 </div>
