@@ -1,16 +1,6 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 using AcrylicUI.Forms;
 using RecMonitor.Services.Metric;
 
->>>>>>> 8b1a561 (Пофиксил проблему когда мониторинг перекрывался другими приложениями)
-=======
-using AcrylicUI.Forms;
-using RecMonitor.Services.Metric;
-using System.Linq;
-
->>>>>>> 8784914715086a5c56a785d7121ee503b7d6e712
 namespace RecMonitor;
 
 internal partial class MainForm : AcrylicForm

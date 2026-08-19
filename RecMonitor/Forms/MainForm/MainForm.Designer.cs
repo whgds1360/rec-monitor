@@ -38,7 +38,6 @@ partial class MainForm
         CPUFreq = new AcrylicUI.Controls.AcrylicTransparentLabel();
         GPUTemp = new AcrylicUI.Controls.AcrylicTransparentLabel();
         GPUFreq = new AcrylicUI.Controls.AcrylicTransparentLabel();
-        SuspendLayout();
         // 
         // BackGround
         // 
@@ -135,17 +134,7 @@ partial class MainForm
         GPUFreq.TextAlign = ContentAlignment.TopLeft;
         // 
         // MainForm
-<<<<<<< HEAD
-        // 
-<<<<<<< HEAD
-        AutoScaleDimensions = new SizeF(8F, 20F);
-=======
-        //
         AutoScaleDimensions = new SizeF(7F, 15F);
->>>>>>> 8b1a561 (Пофиксил проблему когда мониторинг перекрывался другими приложениями)
-=======
-        AutoScaleDimensions = new SizeF(7F, 15F);
->>>>>>> 8784914715086a5c56a785d7121ee503b7d6e712
         AutoScaleMode = AutoScaleMode.Font;
         BackColor = Color.FromArgb(64, 64, 64);
         BackgroundImageLayout = ImageLayout.Stretch;
@@ -165,30 +154,13 @@ partial class MainForm
         Location = new Point(0, 0);
         Margin = new Padding(3, 2, 3, 2);
         Name = "MainForm";
-<<<<<<< HEAD
-<<<<<<< HEAD
-        Text = "MainForm";
-        TitleBar.ResumeLayout(false);
-        TitleBar.PerformLayout();
-        GPU.ResumeLayout(false);
-        GPU.PerformLayout();
-        CPU.ResumeLayout(false);
-        CPU.PerformLayout();
-        RAM.ResumeLayout(false);
-        RAM.PerformLayout();
-        SSD.ResumeLayout(false);
-=======
         Opacity = 0.9D;
         StartPosition = FormStartPosition.Manual;
         Text = "System monitor";
         TopMost = true;
->>>>>>> 8b1a561 (Пофиксил проблему когда мониторинг перекрывался другими приложениями)
-=======
         Opacity = 0.9D;
         StartPosition = FormStartPosition.Manual;
         Text = "System monitor";
->>>>>>> 8784914715086a5c56a785d7121ee503b7d6e712
-        ResumeLayout(false);
     }
 
     #endregion
