@@ -7,4 +7,18 @@
     <Application.Styles>
         <FluentTheme />
     </Application.Styles>
+
+    <TrayIcon.Icons>
+        <TrayIcon Icon="/assets/icon/logo.ico" 
+                  ToolTipText="System Monitor">
+            <!-- Контекстное меню при клике правой кнопкой мыши по иконке в трее -->
+            <TrayIcon.Menu>
+                <NativeMenu>
+                    <NativeMenuItem Header="Выход" Click="AppExitHandler" />
+                </NativeMenu>
+            </TrayIcon.Menu>
+            
+        </TrayIcon>
+    </TrayIcon.Icons>
+
 </Application>

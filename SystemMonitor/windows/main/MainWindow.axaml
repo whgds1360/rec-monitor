@@ -6,36 +6,26 @@
         x:Class="SystemMonitor.MainWindow"
 
         Title="System Monitor"
+        WindowDecorations="None"
+
+        Width="140"
+        Height="200"
+
         Background="Transparent"
-        Opacity="90"
-        SystemDecorations="None"
+        Opacity="0.9"
+
         CanResize="False"
         WindowStartupLocation="Manual"
-        Position="0,0">
+        Position="0,0"
+        Topmost="True"
+        ShowInTaskbar="False">
 
-<StackPanel Name="MainPanel" Orientation="VerticalЁ" HorizontalAlignment="Center" Margin="20">
-    <!-- Панель CPU -->
-    <StackPanel Name="MetricPanel" Classes="MetricPanel High">
-        <Label>CPU</Label>
-        <Label Name="CpuValue">45%</Label>
-    </StackPanel>
+<Panel>
+    <Image Source="/assets/img/MainBackground.jpg" Stretch="UniformToFill">
+    </Image>
 
-    <!-- Панель RAM -->
-    <StackPanel Classes="MetricPanel Medium">
-        <Label>RAM</Label>
-        <Label Name="RamValue">6.2 ГБ</Label>
-    </StackPanel>
-
-    <!-- Панель Disk -->
-    <StackPanel Classes="MetricPanel Low">
-        <Label>DISK</Label>
-        <Label Name="DiskValue">340 ГБ</Label>
-    </StackPanel>
-
-    <!-- Панель Network -->
-    <StackPanel Classes="MetricPanel">
-        <Label>NETWORK</Label>
-        <Label Name="NetworkValue">1.2 МБ/с</Label>
-    </StackPanel>
-</StackPanel>
+    <Canvas Name="MainCanvas">
+        
+    </Canvas>
+</Panel>
 </Window>
