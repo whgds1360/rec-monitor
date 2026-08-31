@@ -1,0 +1,41 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="200" d:DesignHeight="300"
+        x:Class="SystemMonitor.MainWindow"
+
+        Title="System Monitor"
+        Background="Transparent"
+        Opacity="90"
+        SystemDecorations="None"
+        CanResize="False"
+        WindowStartupLocation="Manual"
+        Position="0,0">
+
+<StackPanel Name="MainPanel" Orientation="VerticalЁ" HorizontalAlignment="Center" Margin="20">
+    <!-- Панель CPU -->
+    <StackPanel Name="MetricPanel" Classes="MetricPanel High">
+        <Label>CPU</Label>
+        <Label Name="CpuValue">45%</Label>
+    </StackPanel>
+
+    <!-- Панель RAM -->
+    <StackPanel Classes="MetricPanel Medium">
+        <Label>RAM</Label>
+        <Label Name="RamValue">6.2 ГБ</Label>
+    </StackPanel>
+
+    <!-- Панель Disk -->
+    <StackPanel Classes="MetricPanel Low">
+        <Label>DISK</Label>
+        <Label Name="DiskValue">340 ГБ</Label>
+    </StackPanel>
+
+    <!-- Панель Network -->
+    <StackPanel Classes="MetricPanel">
+        <Label>NETWORK</Label>
+        <Label Name="NetworkValue">1.2 МБ/с</Label>
+    </StackPanel>
+</StackPanel>
+</Window>
