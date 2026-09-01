@@ -15,6 +15,9 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
 
+        metricManager = new MetricManager();
+        metricManager.StartCollection(); 
+
         // Инициализация таймера
         _timer = new Timer(1000); // Интервал в миллисекундах (1000 = 1 секунда)
         _timer.Elapsed += UpdateLabels; // Подписываемся на событие
@@ -24,8 +27,9 @@ public partial class MainWindow : Window
 
     private void UpdateLabels(object? sender, EventArgs e)
     {
-        metricManager = new MetricManager();
-        var data = metricManager.GetData();
+        var data = metricManager?.GetData();
+
+        if (data is null) return;
 
         var cpuLoad = executeData(data["CPU"]["Load"]);
         var cpuTemp = executeData(data["CPU"]["Temp"]);
@@ -38,16 +42,16 @@ public partial class MainWindow : Window
         var ramLoad = executeData(data["RAM"]["Load"]);
 
         CpuLoad.Content = cpuLoad;
-        CpuLoad.Content = cpuTemp;
-        CpuLoad.Content = cpuFreq;
+        CpuTemp.Content = cpuTemp;
+        CpuFreq.Content = cpuFreq;
 
         GpuLoad.Content = gpuLoad;
-        GpuLoad.Content = gpuTemp;
-        GpuLoad.Content = gpuFreq;
+        GpuTemp.Content = gpuTemp;
+        GpuFreq.Content = gpuFreq;
 
         RamLoad.Content = ramLoad;
 
-        metricManager.ClearData();
+        metricManager?.ClearData();
     }
 
     private string executeData(List<float> data)
@@ -59,5 +63,13 @@ public partial class MainWindow : Window
         }
         
         return ((int)(helpCount/data.Count)).ToString();
+    }
+
+    protected override void OnClosed(EventArgs e)
+    {
+        base.OnClosed(e);
+        _timer?.Stop();
+        _timer?.Dispose();
+        metricManager?.Disponse();
     }
 }

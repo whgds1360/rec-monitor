@@ -13,26 +13,42 @@ internal class MetricManager
 
     public MetricManager()
     {
-        // Инициализация таймера
-        _timer = new Timer(100); // Интервал в миллисекундах (1000 = 1 секунда)
-        _timer.Elapsed += getRetrievalData; // Подписываемся на событие
-        _timer.AutoReset = true; // Повторять автоматически
-        _timer.Start(); // Запускаем
+        // Инициализация словарей
+        CpuData["Load"] = new List<float>();
+        CpuData["Temp"] = new List<float>();
+        CpuData["Freq"] = new List<float>();
+        
+        GpuData["Load"] = new List<float>();
+        GpuData["Temp"] = new List<float>();
+        GpuData["Freq"] = new List<float>();
+        
+        RamData["Load"] = new List<float>();
     }
 
-    private void getRetrievalData(object? sednder, EventArgs e)
+    public void StartCollection()
+    {
+        _timer = new Timer(100);
+        _timer.Elapsed += getRetrievalData;
+        _timer.AutoReset = true;
+        _timer.Start();
+    }
+
+    private void getRetrievalData(object? sender, EventArgs e)
     {
         var data = metricCollectors.GetMetricInfo();
+        
+        if (data is null)
+            return;
 
-        CpuData["Load"].Add(data?["СPU"]["Load"]?? 0);
-        CpuData["Temp"].Add(data?["СPU"]["Temp"]?? 0);
-        CpuData["Freq"].Add(data?["СPU"]["Freq"]?? 0);
+        CpuData["Load"].Add(data["CPU"]["Load"] ?? 0);
+        CpuData["Temp"].Add(data["CPU"]["Temp"] ?? 0);
+        CpuData["Freq"].Add(data["CPU"]["Freq"] ?? 0);
 
-        GpuData["Load"].Add(data?["GPU"]["Load"]?? 0);
-        GpuData["Temp"].Add(data?["GPU"]["Temp"]?? 0);
-        GpuData["Freq"].Add(data?["GPU"]["Freq"]?? 0);
+        GpuData["Load"].Add(data["GPU"]["Load"] ?? 0);
+        GpuData["Temp"].Add(data["GPU"]["Temp"] ?? 0);
+        GpuData["Freq"].Add(data["GPU"]["Freq"] ?? 0);
 
-        RamData["Load"].Add(data?["RAM"]["Load"]?? 0);
+        RamData["Load"].Add(data["RAM"]["Load"] ?? 0);
     }
 
     public Dictionary<string, Dictionary<string, List<float>>> GetData()
@@ -56,5 +72,11 @@ internal class MetricManager
         GpuData["Freq"].Clear();
 
         RamData["Load"].Clear();
+    }
+
+    public void Disponse()
+    {
+        _timer.Stop();
+        _timer.Dispose();
     }
 }
