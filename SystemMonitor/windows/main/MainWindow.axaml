@@ -2,14 +2,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="200" d:DesignHeight="300"
+        mc:Ignorable="d" d:DesignWidth="200" d:DesignHeight="361"
         x:Class="SystemMonitor.MainWindow"
 
         Title="System Monitor"
         WindowDecorations="None"
 
-        Width="140"
-        Height="200"
+        Width="200"
+        Height="361"
 
         Background="Transparent"
         Opacity="0.9"
@@ -25,7 +25,17 @@
     </Image>
 
     <Canvas Name="MainCanvas">
-        
+
+    <Label Name="CpuLoad" Classes="Cpu Load" Canvas.Top="70" Canvas.Left="50">100</Label>
+    <Label Name="CpuTemp" Classes="Cpu Other" Canvas.Top="10" Canvas.Left="10"></Label>
+    <Label Name="CpuFreq" Classes="Cpu Other" Canvas.Top="10" Canvas.Left="10"></Label>
+
+    <Label Name="GpuLoad" Classes="Gpu Load" Canvas.Top="168" Canvas.Left="50">100</Label>
+    <Label Name="GpuTemp" Classes="Gpu Other" Canvas.Top="10" Canvas.Left="10"></Label>
+    <Label Name="GpuFreq" Classes="Gpu Other" Canvas.Top="10" Canvas.Left="10"></Label>
+
+    <Label Name="RamLoad" Classes="Ram Load" Canvas.Top="262" Canvas.Left="50">100</Label>
+    
     </Canvas>
 </Panel>
 </Window>

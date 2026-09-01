@@ -6,5 +6,40 @@
 
     <Application.Styles>
         <FluentTheme />
+        <Style Selector="Label">
+            <Setter Property="FontFamily" Value="Impact"/>
+        </Style>
+
+        <Style Selector="Label.Cpu">
+            <Setter Property="Foreground" Value="#00AAFF"/>
+        </Style>
+
+        <Style Selector="Label.Cpu.Load">
+            <Setter Property="FontSize" Value="40"/>
+        </Style>
+
+        <Style Selector="Label.Cpu.Other">
+            <Setter Property="FontSize" Value="10"/>
+        </Style>
+
+        <Style Selector="Label.Gpu">
+            <Setter Property="Foreground" Value="#E8B27DFC"/>
+        </Style>
+
+        <Style Selector="Label.Gpu.Load">
+            <Setter Property="FontSize" Value="40"/>
+        </Style>
+
+        <Style Selector="Label.Gpu.Other">
+            <Setter Property="FontSize" Value="10"/>
+        </Style>
+        
+        <Style Selector="Label.Ram">
+            <Setter Property="Foreground" Value="#E800FF91"/>
+        </Style>
+
+        <Style Selector="Label.Ram.Load">
+            <Setter Property="FontSize" Value="40"/>
+        </Style>
     </Application.Styles>
 </Application>
