@@ -5,11 +5,11 @@ using System;
 namespace SystemMonitor.features.Metric;
 internal class MetricManager
 {
-    private static MetricCollector metricCollectors = new MetricCollector();
+    private MetricCollector metricCollectors = new MetricCollector();
     private Timer _timer;
-    private static Dictionary<string, List<float>> CpuData = new Dictionary<string, List<float>>();
-    private static Dictionary<string, List<float>> GpuData = new Dictionary<string, List<float>>();
-    private static Dictionary<string, List<float>> RamData = new Dictionary<string, List<float>>();
+    private Dictionary<string, List<float>> CpuData = new Dictionary<string, List<float>>();
+    private Dictionary<string, List<float>> GpuData = new Dictionary<string, List<float>>();
+    private Dictionary<string, List<float>> RamData = new Dictionary<string, List<float>>();
 
     public MetricManager()
     {
@@ -20,18 +20,41 @@ internal class MetricManager
         _timer.Start(); // Запускаем
     }
 
-    private static void getRetrievalData(object? sednder, EventArgs e)
+    private void getRetrievalData(object? sednder, EventArgs e)
     {
         var data = metricCollectors.GetMetricInfo();
 
-        CpuData["Load"].Add(data?["Сpu"]["Load"]?? 0);
-        CpuData["Temp"].Add(data?["Сpu"]["Temp"]?? 0);
-        CpuData["Freq"].Add(data?["Сpu"]["Freq"]?? 0);
+        CpuData["Load"].Add(data?["СPU"]["Load"]?? 0);
+        CpuData["Temp"].Add(data?["СPU"]["Temp"]?? 0);
+        CpuData["Freq"].Add(data?["СPU"]["Freq"]?? 0);
 
-        CpuData["Load"].Add(data?["Gpu"]["Load"]?? 0);
-        CpuData["Temp"].Add(data?["Gpu"]["Temp"]?? 0);
-        CpuData["Freq"].Add(data?["Gpu"]["Freq"]?? 0);
+        GpuData["Load"].Add(data?["GPU"]["Load"]?? 0);
+        GpuData["Temp"].Add(data?["GPU"]["Temp"]?? 0);
+        GpuData["Freq"].Add(data?["GPU"]["Freq"]?? 0);
 
-        CpuData["Load"].Add(data?["Ram"]["Load"]?? 0);
+        RamData["Load"].Add(data?["RAM"]["Load"]?? 0);
+    }
+
+    public Dictionary<string, Dictionary<string, List<float>>> GetData()
+    {
+        return new Dictionary<string, Dictionary<string, List<float>>>
+        {
+            ["CPU"] = CpuData,
+            ["GPU"] = GpuData,
+            ["RAM"] = RamData
+        };
+    }
+
+    public void ClearData()
+    {
+        CpuData["Load"].Clear();
+        CpuData["Temp"].Clear();
+        CpuData["Freq"].Clear();
+
+        GpuData["Load"].Clear();
+        GpuData["Temp"].Clear();
+        GpuData["Freq"].Clear();
+
+        RamData["Load"].Clear();
     }
 }
