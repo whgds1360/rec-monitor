@@ -2,14 +2,16 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="200" d:DesignHeight="361"
+        xmlns:win32="clr-namespace:Avalonia.Controls;assembly=Avalonia.Controls"
+        win32:Win32Properties.WindowCornerPreference="Round"
+        mc:Ignorable="d" d:DesignWidth="138" d:DesignHeight="250"
         x:Class="SystemMonitor.MainWindow"
 
         Title="System Monitor"
         WindowDecorations="None"
 
-        Width="200"
-        Height="361"
+        Width="138"
+        Height="250"
 
         Background="Transparent"
         Opacity="0.9"
@@ -26,15 +28,15 @@
 
     <Canvas Name="MainCanvas">
 
-    <Label Name="CpuLoad" Classes="Cpu Load" Canvas.Top="70" Canvas.Left="50">100</Label>
-    <Label Name="CpuTemp" Classes="Cpu Other" Canvas.Top="10" Canvas.Left="10"></Label>
-    <Label Name="CpuFreq" Classes="Cpu Other" Canvas.Top="10" Canvas.Left="10"></Label>
+    <Label Name="CpuLoad" Classes="Cpu Load" Canvas.Top="47" Canvas.Left="33">100</Label>
+    <Label Name="CpuTemp" Classes="Cpu Other" Canvas.Top="47" Canvas.Left="92">70</Label>
+    <Label Name="CpuFreq" Classes="Cpu Other" Canvas.Top="63" Canvas.Left="89">4.2</Label>
 
-    <Label Name="GpuLoad" Classes="Gpu Load" Canvas.Top="168" Canvas.Left="50">100</Label>
-    <Label Name="GpuTemp" Classes="Gpu Other" Canvas.Top="10" Canvas.Left="10"></Label>
-    <Label Name="GpuFreq" Classes="Gpu Other" Canvas.Top="10" Canvas.Left="10"></Label>
+    <Label Name="GpuLoad" Classes="Gpu Load" Canvas.Top="115" Canvas.Left="33">100</Label>
+    <Label Name="GpuTemp" Classes="Gpu Other" Canvas.Top="115" Canvas.Left="92">69</Label>
+    <Label Name="GpuFreq" Classes="Gpu Other" Canvas.Top="130" Canvas.Left="89">1.9</Label>
 
-    <Label Name="RamLoad" Classes="Ram Load" Canvas.Top="262" Canvas.Left="50">100</Label>
+    <Label Name="RamLoad" Classes="Ram Load" Canvas.Top="180" Canvas.Left="33">100</Label>
     
     </Canvas>
 </Panel>

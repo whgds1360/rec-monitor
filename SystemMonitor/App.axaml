@@ -15,11 +15,11 @@
         </Style>
 
         <Style Selector="Label.Cpu.Load">
-            <Setter Property="FontSize" Value="40"/>
+            <Setter Property="FontSize" Value="28"/>
         </Style>
 
         <Style Selector="Label.Cpu.Other">
-            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="FontSize" Value="15"/>
         </Style>
 
         <Style Selector="Label.Gpu">
@@ -27,11 +27,11 @@
         </Style>
 
         <Style Selector="Label.Gpu.Load">
-            <Setter Property="FontSize" Value="40"/>
+            <Setter Property="FontSize" Value="28"/>
         </Style>
 
         <Style Selector="Label.Gpu.Other">
-            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="FontSize" Value="15"/>
         </Style>
         
         <Style Selector="Label.Ram">
@@ -39,7 +39,7 @@
         </Style>
 
         <Style Selector="Label.Ram.Load">
-            <Setter Property="FontSize" Value="40"/>
+            <Setter Property="FontSize" Value="28"/>
         </Style>
     </Application.Styles>
 </Application>
