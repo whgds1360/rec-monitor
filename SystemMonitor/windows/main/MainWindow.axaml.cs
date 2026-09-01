@@ -1,5 +1,6 @@
 using Avalonia.Controls;
 using System;
+using Avalonia.Threading;
 using System.Collections.Generic;
 using System.Timers;
 using SystemMonitor.features.Metric;
@@ -9,7 +10,7 @@ namespace SystemMonitor;
 public partial class MainWindow : Window
 {   
     private MetricManager? metricManager;
-    Timer _timer;
+    DispatcherTimer? _timer;
 
     public MainWindow()
     {
@@ -18,15 +19,16 @@ public partial class MainWindow : Window
         metricManager = new MetricManager();
         metricManager.StartCollection(); 
 
-        // Инициализация таймера
-        _timer = new Timer(1000); // Интервал в миллисекундах (1000 = 1 секунда)
-        _timer.Elapsed += UpdateLabels; // Подписываемся на событие
-        _timer.AutoReset = true; // Повторять автоматически
-        _timer.Start(); // Запускаем
+        _timer = new DispatcherTimer();
+        _timer.Interval = TimeSpan.FromSeconds(1);
+        _timer.Tick += UpdateLabels;
+        _timer.Start();
     }
 
     private void UpdateLabels(object? sender, EventArgs e)
-    {
+    {   
+        System.Diagnostics.Debug.WriteLine("Главный таймер сработал!");
+
         var data = metricManager?.GetData();
 
         if (data is null) return;
@@ -52,6 +54,8 @@ public partial class MainWindow : Window
         RamLoad.Content = ramLoad;
 
         metricManager?.ClearData();
+
+        System.Diagnostics.Debug.WriteLine("Главный таймер сработал!");
     }
 
     private string executeData(List<float> data)
@@ -69,7 +73,6 @@ public partial class MainWindow : Window
     {
         base.OnClosed(e);
         _timer?.Stop();
-        _timer?.Dispose();
         metricManager?.Disponse();
     }
 }
