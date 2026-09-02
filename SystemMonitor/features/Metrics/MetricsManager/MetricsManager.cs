@@ -6,7 +6,7 @@ namespace SystemMonitor.features.Metric;
 internal class MetricManager
 {
     private MetricCollector metricCollectors = new MetricCollector();
-    private Timer _timer;
+    private Timer? _timer;
     private Dictionary<string, List<float>> CpuData = new Dictionary<string, List<float>>();
     private Dictionary<string, List<float>> GpuData = new Dictionary<string, List<float>>();
     private Dictionary<string, List<float>> RamData = new Dictionary<string, List<float>>();
@@ -76,7 +76,7 @@ internal class MetricManager
 
     public void Disponse()
     {
-        _timer.Stop();
-        _timer.Dispose();
+        _timer?.Stop();
+        _timer?.Dispose();
     }
 }

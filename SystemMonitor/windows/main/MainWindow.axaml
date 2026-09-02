@@ -28,15 +28,15 @@
 
     <Canvas Name="MainCanvas">
 
-    <Label Name="CpuLoad" Classes="Cpu Load" Canvas.Top="47" Canvas.Left="33">100</Label>
-    <Label Name="CpuTemp" Classes="Cpu Other" Canvas.Top="47" Canvas.Left="92">70</Label>
-    <Label Name="CpuFreq" Classes="Cpu Other" Canvas.Top="63" Canvas.Left="89">4.2</Label>
+    <Label Name="CpuLoad" Classes="Cpu Load" Canvas.Top="50" Canvas.Left="95">100</Label>
+    <Label Name="CpuTemp" Classes="Cpu Other" Canvas.Top="70" Canvas.Left="20">70</Label>
+    <Label Name="CpuFreq" Classes="Cpu Other" Canvas.Top="70" Canvas.Left="55">4200</Label>
 
-    <Label Name="GpuLoad" Classes="Gpu Load" Canvas.Top="115" Canvas.Left="33">100</Label>
-    <Label Name="GpuTemp" Classes="Gpu Other" Canvas.Top="115" Canvas.Left="92">69</Label>
-    <Label Name="GpuFreq" Classes="Gpu Other" Canvas.Top="130" Canvas.Left="89">1.9</Label>
+    <Label Name="GpuLoad" Classes="Gpu Load" Canvas.Top="117" Canvas.Left="95">100</Label>
+    <Label Name="GpuTemp" Classes="Gpu Other" Canvas.Top="138" Canvas.Left="20">69</Label>
+    <Label Name="GpuFreq" Classes="Gpu Other" Canvas.Top="138" Canvas.Left="55">1999</Label>
 
-    <Label Name="RamLoad" Classes="Ram Load" Canvas.Top="180" Canvas.Left="33">100</Label>
+    <Label Name="RamLoad" Classes="Ram Load" Canvas.Top="184" Canvas.Left="95">100</Label>
     
     </Canvas>
 </Panel>

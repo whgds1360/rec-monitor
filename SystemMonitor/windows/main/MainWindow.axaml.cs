@@ -2,7 +2,6 @@ using Avalonia.Controls;
 using System;
 using Avalonia.Threading;
 using System.Collections.Generic;
-using System.Timers;
 using SystemMonitor.features.Metric;
 
 namespace SystemMonitor;
@@ -26,8 +25,7 @@ public partial class MainWindow : Window
     }
 
     private void UpdateLabels(object? sender, EventArgs e)
-    {   
-        System.Diagnostics.Debug.WriteLine("Главный таймер сработал!");
+    {
 
         var data = metricManager?.GetData();
 
