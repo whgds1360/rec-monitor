@@ -14,7 +14,7 @@
         Height="250"
 
         Background="Transparent"
-        Opacity="0.9"
+        Opacity="1"
 
         CanResize="False"
         WindowStartupLocation="Manual"
