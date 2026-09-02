@@ -10,18 +10,32 @@ public partial class MainWindow : Window
 {   
     private MetricManager? metricManager;
     DispatcherTimer? _timer;
+    private bool DebugMode = false;
 
     public MainWindow()
-    {
+    {   
         InitializeComponent();
 
-        metricManager = new MetricManager();
-        metricManager.StartCollection(); 
+        //DebugMode = true;
 
-        _timer = new DispatcherTimer();
-        _timer.Interval = TimeSpan.FromSeconds(1);
-        _timer.Tick += UpdateLabels;
-        _timer.Start();
+        if (!DebugMode)
+        {
+            System.Diagnostics.Debug.WriteLine("Debug mod: Disable");
+
+            metricManager = new MetricManager();
+            metricManager.StartCollection(); 
+
+            _timer = new DispatcherTimer();
+            _timer.Interval = TimeSpan.FromSeconds(1);
+            _timer.Tick += UpdateLabels;
+            _timer.Start();
+        }
+        else
+        {
+            System.Diagnostics.Debug.WriteLine("Degub mod: Activated");
+            MetricCollector.DebugSensors();
+        }
+
     }
 
     private void UpdateLabels(object? sender, EventArgs e)

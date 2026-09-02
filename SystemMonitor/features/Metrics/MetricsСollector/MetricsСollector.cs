@@ -36,8 +36,6 @@ namespace SystemMonitor.features.Metric;
                 this.computer.Open();
                 this.computer.Accept(new UpdateVisitor());
 
-                //DebugSensors(this.computer); Для поиска нужных сенсоров
-
                 var cpuData = GetCPUInfo(this.computer);
                 var gpuData = GetGPUInfo(this.computer);
                 var ramData = GetRAMInfo(this.computer);
@@ -131,19 +129,34 @@ namespace SystemMonitor.features.Metric;
             return ramData;
         }
 
-        private static void DebugSensors(Computer computer)
+        /// <summary>
+        /// Вспомогательный метод, который выводит список всех сенсоров у
+        /// конкретного устройства. Для использования поставить <DebugMode = true>
+        /// </summary>
+        public static void DebugSensors()
         {
+            var computer = new Computer
+                {
+                    IsCpuEnabled = true,
+                    IsGpuEnabled = true,
+                    IsMemoryEnabled = true,
+                };
+
+            computer.Open();
+            computer.Accept(new UpdateVisitor());
+
             foreach (var hardware in computer.Hardware)
             {
-                if (hardware.HardwareType != HardwareType.Cpu) continue;
+                if (hardware.HardwareType != HardwareType.Cpu) continue; // Вот тут выбирать устройство у которого вывести список сенсоров.
                 hardware.Update();
 
                 System.Diagnostics.Debug.WriteLine($"=== {hardware.Name} ===");
+                System.Diagnostics.Debug.WriteLine($"=== Найдены сенсоры: ===");
                 foreach (var sensor in hardware.Sensors)
                 {
-                    System.Diagnostics.Debug.WriteLine($"{sensor.Name} !!! ({sensor.SensorType}) !!! {sensor.Value}");
+                    System.Diagnostics.Debug.WriteLine($"Имя:{sensor.Name} Тип:({sensor.SensorType}) Значение:{sensor.Value}");
+                    System.Diagnostics.Debug.WriteLine($"===================================================================");
                 }
             }
         }
-
     }
